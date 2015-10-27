@@ -1,0 +1,90 @@
+/*
+Header
+*/
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin: auto;
+}
+
+
+/*
+Nav Bar
+*/
+
+nav {
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0 0;
+}
+
+nav a {
+  font-weight: 800;
+  padding: 15px 10px;
+
+}
+
+nav ul {
+  list-style: none;
+  font-size: 1.25em;
+  margin: 0 10px;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+
+}
+
+
+/*
+Support Questions
+*/
+
+.supportQuestions {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: large;
+  text-align: left;
+  margin: auto;
+  list-style-type: none;
+  color: #FFFFFF;
+}
+
+.supportQuestions:hover {
+  color: #FFCC00;
+}
+
+.highlight {
+  color: #FFCC00;
+}
+
+#helpDeskContainer {
+  background-color: #C19A6B;
+  padding: 10px 10px;
+  margin: auto;
+  width: 800px;
+}
+
+
+/*
+User Text
+*/
+
+#userText {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 150%;
+  text-align: center;
+  margin: auto;
+  color: #FFFFFF;
+}
+
+#userTextContainer {
+  background-color: #CC3300;
+  padding: 10px 10px;
+  margin: auto;
+  width: 800px;
+}
