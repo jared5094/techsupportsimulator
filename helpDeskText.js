@@ -31,11 +31,5 @@ create instance for problem 1.
   //   this.pingWebsite = pingWebsite;
   // }
 
-  //format text to HTML.
-  function format(text) {
-    var formattedText = '<li>' + text + '</li>';
-    return formattedText;
-  }
-
 
 
