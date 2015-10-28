@@ -5,17 +5,18 @@ function problem100() {
 
   //create question series for problem100: Identify1, Resolve1.
   var supportIdentify1 = new supportIdentify(
-    "Are you trying to use an Ethernet or a wireless connection?",
-    "What is being displayed in the browser?",
+    "Are you using an Ethernet or wireless connection?",
+    "What is the browser displaying?",
     "Can you access the local intranet?",
     "Please open the Control Panel and view Network Connections. Is the network adapter enabled?"
     );
 
   var supportResolve1 = new supportResolve(
-    "Can you try disabling and then re-enabling the network adapter?",
-    "Can you try to access a different website?",
-    "Try restarting the computer.",
-    "Is the Ethernet cable plugged into the computer?"
+    "Disable and then re-enable the network adapter.",
+    "Try to access a different website.",
+    "Restart the computer.",
+    "Is the laptop's wireless switch turned on?",
+    "Go to the Properties of the network adapter. Is it configured to receive an IP address automatically?"
     );
 
   //for each property of each question series, format and append its value to #support[series].
@@ -27,27 +28,75 @@ function problem100() {
   }
 
   //add the class 'supportQuestions' to each support question.
-  $('#helpDeskContainer').children().children().addClass('supportQuestions');
+  $('#helpDeskContainer').children().children().addClass('supportQuestions clickme');
 
   //create answer series for problem100: Identify1, Resolve1.
   var userIdentify1 = new userIdentify(
-    "Why isn't the Internet working?",
+    "Hi. Why isn't the Internet working?",
     "My job.",
-    "Hold on... No, just me.",
-    "A couple of minutes ago.?",
-    "Yes.",
-    "I'm on a work computer using a wired connection.",
-    "It just says unable to connect.",
+    "Hold on... No, it's just me.",
+    "A couple of minutes ago.",
+    "Yes",
+    "It's my work laptop, so the wireless isn't working.",
+    "It just says it is unable to connect.",
     "No, I can't access that either.",
     "I already checked that. It's working."
   );
 
   var userResolve1 = new userResolve(
-    "OK... No I still can't access the Internet.",
+    "OK... No, I still can't access the Internet.",
     "I can't access anything on the web.",
-    "Yeah, the cable's plugged in.",
-    "Hello? No, the problem is still there."
+    "Yeah, the light is showing.",
+    "Hello? No, the problem is still there.",
+    "Oh no! For some reason, it switched to the settings for my home network! Thanks, bye."
   );
+
+  //Turn off click handler for supportQuestions. Highlight question.
+  //Create variables for passing into function 'userResponse': value of this (question clicked),
+  //values of questionSeries and answerSeries.
+  var userText = function() {
+    $('li.supportQuestions').off();
+    $(this).removeClass('clickme');
+    $(this).addClass('highlight');
+    var value = $(this).text();
+    var supportSeries = [supportIdentify1, supportResolve1];
+    var userSeries = [userIdentify1, userResolve1];
+    for (i = 0; i < supportSeries.length; i++) {
+      var questionSeries = supportSeries[i];
+      var answerSeries = userSeries[i];
+      userResponse(value, questionSeries, answerSeries);
+    }
+    // userResponse(value, supportIdentify1, userIdentify1);
+  }
+
+  //Match question with property of questionSeries, match property with property of answerSeries,
+  //then get value from answerSeries property and insert into userText.
+  function userResponse(value, questionSeries, answerSeries) {
+    for (var prop in questionSeries) {
+      if (questionSeries[prop] === value) {
+        $('#userText').text(answerSeries[prop]);
+        wipeReset();
+      }
+    }
+  }
+
+  //After 5 seconds, wipe userText and reset click handler on supportQuestions.
+  function wipeReset() {
+    setTimeout(function() {
+      $('#userText').text('');
+      $('li.clickme').on('click', userText);
+    }, 4000 );
+  }
+
+  alert("You have 30 seconds to solve the user's problem.");
+
+   //Create click handler for supportQuestions and activate anonymous function 'userText'.
+  $('li.supportQuestions').on('click', userText);
+
+setTimeout( function() {
+
+  alert("Out of Time! Call passed to Level 2.");
+}, 30000);
 
 }
 

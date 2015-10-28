@@ -20,11 +20,12 @@ function userIdentify(greeting, userObjective, usersAffected, lastTimeSystemWork
 
 //Resolve questions that vary according to problem.
 function userResolve(restartSubSystem1, restartSubSystem2, checkPhysicalConnections,
-  restartWholeSystem) {
+  restartWholeSystem, checkConfiguration) {
   this.restartSubSystem1 = restartSubSystem1;
   this.restartSubSystem2 = restartSubSystem2;
   this.checkPhysicalConnections = checkPhysicalConnections;
   this.restartWholeSystem = restartWholeSystem;
+  this.checkConfiguration = checkConfiguration;
 }
 
 // function cmdCommands(pingLocalhost, pingWebsite) {

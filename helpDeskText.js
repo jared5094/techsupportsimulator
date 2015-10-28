@@ -7,8 +7,8 @@ create instance for problem 1.
   function supportIdentify(userSubSystem, errorMessage, systemStatusA, systemStatusB)
   {
     this.greeting = "Good day, how may I help?";
-    this.userObjective = "What are you trying to achieve?";
-    this.usersAffected = "Is anyone else in your area experiencing the same problem?";
+    this.userObjective = "What are you trying to do?";
+    this.usersAffected = "Is anyone else experiencing the same problem?";
     this.lastTimeSystemWorking = "When was the last time it was working?";
     this.getRemoteAccess = "May I access your computer remotely?";
     this.userSubSystem = userSubSystem;
@@ -19,12 +19,14 @@ create instance for problem 1.
 
   //Resolve questions that vary according to problem.
   function supportResolve(restartSubSystem1, restartSubSystem2, restartWholeSystem,
-    checkPhysicalConnections) {
+    checkPhysicalConnections, checkConfiguration) {
     this.restartSubSystem1 = restartSubSystem1;
     this.restartSubSystem2 = restartSubSystem2;
     this.restartWholeSystem = restartWholeSystem;
     this.checkPhysicalConnections = checkPhysicalConnections;
+    this.checkConfiguration = checkConfiguration;
   }
+
 
   // function cmdCommands(pingLocalhost, pingWebsite) {
   //   this.pingLocalhost = pingLocalhost;
